@@ -6,7 +6,7 @@ $version_base = "5.15"
 $version = "5.15.2"
 
 $qt_sources_url = "https://download.qt.io/official_releases/qt/" + $version_base + "/" + $version + "/single/qt-everywhere-src-" + $version + ".tar.xz.meta4"
-$qt_archive_file = "qt-" + $version + ".tar.xz"
+$qt_archive_file = $qt_sources_url.split('/')[-1] -replace "\.meta4$"
 $qt_src_base_folder = $pwd.Path + "\qt-everywhere-src-" + $version
 
 $tools_folder = $pwd.Path + "\tools\"
@@ -29,7 +29,7 @@ ls aria2-1.36.0-win-64bit-build1.zip
 # $AllProtocols = [System.Net.SecurityProtocolType]'Ssl3,Tls,Tls11,Tls12'
 # [System.Net.ServicePointManager]::SecurityProtocol = $AllProtocols
 
-aria2c $qt_sources_url -o $qt_archive_file
+$aria2 $qt_sources_url
 
 # Invoke-WebRequest -Uri $qt_sources_url -OutFile $qt_archive_file
 ls
