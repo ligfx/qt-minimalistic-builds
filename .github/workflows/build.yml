@@ -19,12 +19,10 @@ jobs:
     steps:
     - name: "Check out source"
       uses: actions/checkout@v2
-    - name: "Set environment variables"
-      shell: cmd
-      run: |
-        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat" || exit
-        set
-        set >> $GITHUB_ENV || exit
+    - name: Configure build for amd64
+      uses: ilammy/msvc-dev-cmd@v1
+      with:
+          arch: amd64
     - name: "Build"
       run: ./msvc2019-build5.15.2-static.ps1
     - name: "List"
