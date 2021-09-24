@@ -14,13 +14,17 @@ Write-Output "$(Get-Date)"
 # 19:35:51
 # 7z x "qt-everywhere-src-5.15.2.zip" -aoa -bsp1
 # 19:39:52
+
+# 19:43:13
 7z x "qt-everywhere-src-5.15.2.tar.xz" -aoa -bsp1
-7z x "qt-everywhere-src-5.15.2.tar" -aoa -bsp1
+7z x "qt-everywhere-src-5.15.2.tar" -aoa -bsp1 -x.\.\@PaxHeader
+# 
 Write-Output "$(Get-Date)"
 $qt_src_base_folder = $pwd.Path + "\qt-everywhere-src-5.15.2"
 $install_folder = $pwd.Path + "\qt-5.15.2-mscv2017-x86_64"
 ls
 
+exit
 # Configure.
 mkdir "build"
 cd "build"
