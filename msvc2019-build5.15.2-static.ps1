@@ -2,32 +2,20 @@
 # 2. Run powershell.exe from Native Tools cmd.
 # 3. cd to path of qt5-minimalistic-builds repo.
 
-$version_base = "5.15"
-$version = "5.15.2"
-
-$qt_sources_url = "https://download.qt.io/official_releases/qt/" + $version_base + "/" + $version + "/single/qt-everywhere-src-" + $version + ".tar.xz.meta4"
-$qt_archive_file = $qt_sources_url.split('/')[-1] -replace "\.meta4$"
-$qt_src_base_folder = $pwd.Path + "\qt-everywhere-src-" + $version
-
 $tools_folder = $pwd.Path + "\tools\"
-$type = "static"
-$prefix_base_folder = "qt-" + $version + "-" + $type + "-msvc2019-x86_64"
-$prefix_folder = $pwd.Path + "\" + $prefix_base_folder
-$build_folder = $pwd.Path + "\bld"
-
 
 # Download Qt sources, unpack.
 aria2c "https://download.qt.io/official_releases/qt/5.15/5.15.2/single/qt-everywhere-src-5.15.2.tar.xz.meta4"
 7z x "qt-everywhere-src-5.15.2.tar.xz"
 7z x "qt-everywhere-src-5.15.2.tar"
+$qt_src_base_folder = $pwd.Path + "\qt-everywhere-src-5.15.2"
 ls
 
 # Configure.
-cd "qt-everywhere-src-5.15.2"
 mkdir "build"
 cd "build"
 
-& "..\configure.bat" -debug-and-release \
+& "$qt_src_base_folder\configure.bat" -debug-and-release \
     -opensource -confirm-license \
     -platform win32-msvc2017 \
     -list-modules \
