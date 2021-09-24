@@ -29,7 +29,7 @@ ls aria2-1.36.0-win-64bit-build1.zip
 # $AllProtocols = [System.Net.SecurityProtocolType]'Ssl3,Tls,Tls11,Tls12'
 # [System.Net.ServicePointManager]::SecurityProtocol = $AllProtocols
 
-$aria2 $qt_sources_url
+& "$aria2" "$qt_sources_url"
 
 # Invoke-WebRequest -Uri $qt_sources_url -OutFile $qt_archive_file
 ls
