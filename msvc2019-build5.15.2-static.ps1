@@ -46,7 +46,7 @@ $skips = @(
   "qtxml",
   "qtxmlpatterns"
 )
-$excludes = $skips | % { "-x!" + $_ }
+$excludes = $skips | % { "-xr!" + $_ }
 
 echo @skips
 echo @excludes
