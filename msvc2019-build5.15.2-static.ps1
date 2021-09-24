@@ -20,7 +20,7 @@ $skips = @(
   "qtlottie",
   "qtmacextras",
   "qtmultimedia",
-  "qtnetwork",
+  # "qtnetwork",
   "qtnetworkauth",
   "qtpurchasing",
   "qtquick3d",
@@ -47,6 +47,7 @@ $skips = @(
   "qtxmlpatterns"
 )
 $excludes = $skips | % { "-xr!" + $_ }
+$qtskips = $skips | % { "-skip " + $_ }
 
 echo @skips
 echo @excludes
@@ -79,57 +80,15 @@ cd "build"
     -opengl desktop `
     -no-iconv -no-dbus -no-icu -no-fontconfig -no-freetype -qt-harfbuzz `
     -nomake examples -nomake tests `
-    -skip qt3d `
-    -skip qtactiveqt `
-    -skip qtandroidextras `
-    -skip qtcanvas3d `
-    -skip qtcharts `
-    -skip qtconnectivity `
-    -skip qtdatavis3d `
-    -skip qtdeclarative `
-    -skip qtdoc `
-    -skip qtfeedback `
-    -skip qtgamepad `
-    -skip qtgraphicaleffects `
-    -skip qtlocation `
-    -skip qtlottie `
-    -skip qtmacextras `
-    -skip qtmultimedia `
-    -skip qtnetwork `
-    -skip qtnetworkauth `
-    -skip qtpurchasing `
-    -skip qtquick3d `
-    -skip qtquickcontrols `
-    -skip qtquickcontrols2 `
-    -skip qtquicktimeline `
-    -skip qtremoteobjects `
-    -skip qtscript `
-    -skip qtscxml `
-    -skip qtsensors `
-    -skip qtserialbus `
-    -skip qtserialport `
-    -skip qtspeech `
-    -skip qtsvg `
-    -skip qtvirtualkeyboard `
-    -skip qtwayland `
-    -skip qtwebchannel `
-    -skip qtwebengine `
-    -skip qtwebglplugin `
-    -skip qtwebsockets `
-    -skip qtwebview `
-    -skip qtx11extras `
-    -skip qtxml `
-    -skip qtxmlpatterns `
+    @qtskips `
     -mp `
-    -D "JAS_DLL=0" `
     -static `
     -feature-relocatable `
-    -ltcg `
     -prefix $prefix
 
 # Compile.
-& "$tools_folder\jom.exe"
-& "$tools_folder\jom.exe" install
+jom
+jom install
 #nmake
 #nmake install
 
