@@ -11,17 +11,18 @@ aria2c "https://download.qt.io/official_releases/qt/5.15/5.15.2/single/qt-everyw
 Write-Output "$(Get-Date)"
 7z x "qt-everywhere-src-5.15.2.zip" -aoa -bsp1
 Write-Output "$(Get-Date)"
-$qt_src_base_folder = $pwd.Path + "\qt-everywhere-src-5.15.2"
-$install_folder = $pwd.Path + "\qt-5.15.2-mscv2017-x86_64"
+$qt_src = $pwd.Path + "\qt-everywhere-src-5.15.2"
+$prefix = $pwd.Path + "\qt-5.15.2-mscv2017-x86_64"
 ls
+ls "$qt_src"
 
 # Configure.
 mkdir "build"
 cd "build"
 
-& "$qt_src_base_folder\configure.bat" -debug-and-release `
+& "$qt_src\configure.bat" -debug-and-release `
     -opensource -confirm-license `
-    -platform win32-msvc2017 `
+    -platform win32-msvc `
     -list-features `
     -list-modules `
     -opengl desktop `
@@ -34,7 +35,9 @@ cd "build"
     -skip qtcharts `
     -skip qtconnectivity `
     -skip qtdatavis3d `
+    -skip qtdeclarative `
     -skip qtdoc `
+    -skip qtfeedback `
     -skip qtgamepad `
     -skip qtgraphicaleffects `
     -skip qtlocation `
@@ -58,8 +61,9 @@ cd "build"
     -skip qtsvg `
     -skip qtvirtualkeyboard `
     -skip qtwayland `
-    -skip qtwebchannel
+    -skip qtwebchannel `
     -skip qtwebengine `
+    -skip qtwebglplugin `
     -skip qtwebsockets `
     -skip qtwebview `
     -skip qtx11extras `
@@ -70,7 +74,7 @@ cd "build"
     -static `
     -feature-relocatable `
     -ltcg `
-    -prefix $prefix_folder
+    -prefix $prefix
 
 # Compile.
 & "$tools_folder\jom.exe"
@@ -80,4 +84,3 @@ cd "build"
 
 # Create final archive.
 ls
-# 7z a -t7z "${prefix_base_folder}.7z" "$prefix_folder" -mmt -mx9
