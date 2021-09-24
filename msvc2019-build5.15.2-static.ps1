@@ -24,15 +24,14 @@ Invoke-WebRequest -Uri "$aria2_binary_url" -OutFile $aria2_archive_file
 Expand-Archive $aria2_archive_file -DestinationPath $aria2_folder
 ls
 ls aria2-1.36.0-win-64bit-build1.zip
-exit
 
 # Download Qt sources, unpack.
 # $AllProtocols = [System.Net.SecurityProtocolType]'Ssl3,Tls,Tls11,Tls12'
 # [System.Net.ServicePointManager]::SecurityProtocol = $AllProtocols
 
-aria2c 
+aria2c $qt_sources_url -o $qt_archive_file
 
-Invoke-WebRequest -Uri $qt_sources_url -OutFile $qt_archive_file
+# Invoke-WebRequest -Uri $qt_sources_url -OutFile $qt_archive_file
 & "$tools_folder\7za.exe" x $qt_archive_file
 
 # Configure.
