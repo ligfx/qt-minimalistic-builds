@@ -6,7 +6,7 @@ $version_base = "5.15"
 $version = "5.15.2"
 
 $qt_sources_url = "https://download.qt.io/official_releases/qt/" + $version_base + "/" + $version + "/single/qt-everywhere-src-" + $version + ".tar.xz.meta4"
-$qt_archive_file = $pwd.Path + "\qt-" + $version + ".tar.xz"
+$qt_archive_file = "qt-" + $version + ".tar.xz"
 $qt_src_base_folder = $pwd.Path + "\qt-everywhere-src-" + $version
 
 $tools_folder = $pwd.Path + "\tools\"
