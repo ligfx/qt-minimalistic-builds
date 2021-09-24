@@ -8,7 +8,7 @@
 Add-MpPreference -ExclusionPath $pwd.Path
 Write-Output "$(Get-Date)"
 # aria2c "https://download.qt.io/official_releases/qt/5.15/5.15.2/single/qt-everywhere-src-5.15.2.zip.meta4"
-aria2c "https://download.qt.io/official_releases/qt/5.15/5.15.2/single/qt-everywhere-src-5.15.2.tar.xz.meta4"
+aria2c "https://download.qt.io/official_releases/qt/5.15/5.15.2/single/qt-everywhere-src-5.15.2.tar.xz.meta4" --optimize-concurrent-downloads
 
 Write-Output "$(Get-Date)"
 # 19:35:51
@@ -16,9 +16,15 @@ Write-Output "$(Get-Date)"
 # 19:39:52
 
 # 19:43:13
-7z x "qt-everywhere-src-5.15.2.tar.xz" -aoa -bsp1
-7z x "qt-everywhere-src-5.15.2.tar" -aoa -bsp1 -x.\.\@PaxHeader
+# 7z x "qt-everywhere-src-5.15.2.tar.xz" -aoa -bsp1
+# 7z x "qt-everywhere-src-5.15.2.tar" -aoa -bsp1
 # 
+
+# 19:47:
+7z x "qt-everywhere-src-5.15.2.tar.xz" -aoa -bsp1
+7z x "qt-everywhere-src-5.15.2.tar" -aoa -bsp1 "-x.\.\@PaxHeader"
+#
+
 Write-Output "$(Get-Date)"
 $qt_src_base_folder = $pwd.Path + "\qt-everywhere-src-5.15.2"
 $install_folder = $pwd.Path + "\qt-5.15.2-mscv2017-x86_64"
