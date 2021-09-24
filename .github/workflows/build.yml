@@ -23,6 +23,7 @@ jobs:
       shell: cmd
       run: |
         call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat" || exit
+        set
         set >> $GITHUB_ENV || exit
     - name: "Build"
       run: ./msvc2019-build5.15.2-static.ps1
