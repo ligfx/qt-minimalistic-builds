@@ -50,16 +50,11 @@ $skip = @(
 )
 $excludes = $skips | % { "-x!" + $_ }
 
-
-
-echo $env:Path
-
-cl
+echo @skips
+echo @excludes
 
 # Get jom
 $env:Path += (";" + $pwd.Path + "\tools")
-
-cl
 
 # Download Qt sources, unpack.
 Add-MpPreference -ExclusionPath $pwd.Path
