@@ -3,6 +3,8 @@
 # 3. cd to path of repo.
 # 4. Run this script.
 
+# Get jom
+$env:Path += (";" + $pwd.Path + "\tools")
 
 # Download Qt sources, unpack.
 Add-MpPreference -ExclusionPath $pwd.Path
