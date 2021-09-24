@@ -22,10 +22,10 @@ Write-Output "$(Get-Date)"
 aria2c "https://download.qt.io/official_releases/qt/5.15/5.15.2/single/qt-everywhere-src-5.15.2.zip.meta4"
 Write-Output "$(Get-Date)"
 
-Add-Type -Assembly "System.IO.Compression.Filesystem"
-[System.IO.Compression.ZipFile]::ExtractToDirectory("qt-everywhere-src-5.15.2.zip", ".", $true)
+# Add-Type -Assembly "System.IO.Compression.Filesystem"
+# [System.IO.Compression.ZipFile]::ExtractToDirectory("qt-everywhere-src-5.15.2.zip", ".", $true)
 
-# 7z x "qt-everywhere-src-5.15.2.zip" -aoa
+7z x "qt-everywhere-src-5.15.2.zip" -aoa -bsp1
 # Expand-Archive "qt-everywhere-src-5.15.2.zip"
 Write-Output "$(Get-Date)"
 # 7z x "qt-everywhere-src-5.15.2.tar.xz" -aoa -bb
