@@ -17,10 +17,16 @@
 
 
 # Download Qt sources, unpack.
+Add-MpPreference -ExclusionPath $pwd.Path
 Write-Output "$(Get-Date)"
 aria2c "https://download.qt.io/official_releases/qt/5.15/5.15.2/single/qt-everywhere-src-5.15.2.zip.meta4"
 Write-Output "$(Get-Date)"
-Expand-Archive "qt-everywhere-src-5.15.2.zip"
+
+Add-Type -Assembly "System.IO.Compression.Filesystem"
+[System.IO.Compression.ZipFile]::ExtractToDirectory("qt-everywhere-src-5.15.2.zip", ".", TRUE)
+
+# 7z x "qt-everywhere-src-5.15.2.zip" -aoa
+# Expand-Archive "qt-everywhere-src-5.15.2.zip"
 Write-Output "$(Get-Date)"
 # 7z x "qt-everywhere-src-5.15.2.tar.xz" -aoa -bb
 # 7z x "qt-everywhere-src-5.15.2.tar" -aoa -bb
