@@ -45,12 +45,16 @@ $skip = @(
   "qtwebview",
   "qtx11extras",
   "qtxml",
-  "qtxmlpatterns",
+  "qtxmlpatterns"
 )
 $excludes = $skips | % { "-x!" + $_ }
 
+cl
+
 # Get jom
 $env:Path += (";" + $pwd.Path + "\tools")
+
+cl
 
 # Download Qt sources, unpack.
 Add-MpPreference -ExclusionPath $pwd.Path
