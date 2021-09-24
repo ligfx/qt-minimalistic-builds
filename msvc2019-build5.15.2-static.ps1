@@ -3,6 +3,52 @@
 # 3. cd to path of repo.
 # 4. Run this script.
 
+
+$skip = @(
+  "qt3d",
+  "qtactiveqt",
+  "qtandroidextras",
+  "qtcanvas3d",
+  "qtcharts",
+  "qtconnectivity",
+  "qtdatavis3d",
+  "qtdeclarative",
+  "qtdoc",
+  "qtfeedback",
+  "qtgamepad",
+  "qtgraphicaleffects",
+  "qtlocation",
+  "qtlottie",
+  "qtmacextras",
+  "qtmultimedia",
+  "qtnetwork",
+  "qtnetworkauth",
+  "qtpurchasing",
+  "qtquick3d",
+  "qtquickcontrols",
+  "qtquickcontrols2",
+  "qtquicktimeline",
+  "qtremoteobjects",
+  "qtscript",
+  "qtscxml",
+  "qtsensors",
+  "qtserialbus",
+  "qtserialport",
+  "qtspeech",
+  "qtsvg",
+  "qtvirtualkeyboard",
+  "qtwayland",
+  "qtwebchannel",
+  "qtwebengine",
+  "qtwebglplugin",
+  "qtwebsockets",
+  "qtwebview",
+  "qtx11extras",
+  "qtxml",
+  "qtxmlpatterns",
+)
+$excludes = $skips | % { "-x!" + $_ }
+
 # Get jom
 $env:Path += (";" + $pwd.Path + "\tools")
 
@@ -11,7 +57,7 @@ Add-MpPreference -ExclusionPath $pwd.Path
 Write-Output "$(Get-Date)"
 aria2c "https://download.qt.io/official_releases/qt/5.15/5.15.2/single/qt-everywhere-src-5.15.2.zip.meta4"
 Write-Output "$(Get-Date)"
-7z x "qt-everywhere-src-5.15.2.zip" -aoa -bsp1
+7z x "qt-everywhere-src-5.15.2.zip" -aoa -bsp1 @excludes
 Write-Output "$(Get-Date)"
 $qt_src = $pwd.Path + "\qt-everywhere-src-5.15.2"
 $prefix = $pwd.Path + "\qt-5.15.2-mscv2017-x86_64"
