@@ -84,8 +84,6 @@ $skip_features = @(
 & "$qt_src\configure.bat" -debug-and-release `
     -opensource -confirm-license `
     -platform win32-msvc `
-    -list-features `
-    -list-modules `
     -opengl desktop `
     -no-iconv -no-dbus -no-icu -no-fontconfig -no-freetype -qt-harfbuzz `
     -nomake examples -nomake tests -nomake-tools `
