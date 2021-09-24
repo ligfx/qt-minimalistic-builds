@@ -19,6 +19,7 @@ $build_folder = $pwd.Path + "\bld"
 # Download Qt sources, unpack.
 aria2c "https://download.qt.io/official_releases/qt/5.15/5.15.2/single/qt-everywhere-src-5.15.2.tar.xz.meta4"
 7z x "qt-everywhere-src-5.15.2.tar.xz"
+7z x "qt-everywhere-src-5.15.2.tar"
 ls
 
 # Configure.
