@@ -21,61 +21,60 @@ $qt_src_base_folder = $pwd.Path + "\qt-everywhere-src-5.15.2"
 $install_folder = $pwd.Path + "\qt-5.15.2-mscv2017-x86_64"
 ls
 
-exit
 # Configure.
 mkdir "build"
 cd "build"
 
-& "$qt_src_base_folder\configure.bat" -debug-and-release \
-    -opensource -confirm-license \
-    -platform win32-msvc2017 \
-    -list-modules \
-    -opengl desktop \
-    -no-iconv -no-dbus -no-icu -no-fontconfig -no-freetype -qt-harfbuzz \
-    -nomake examples -nomake tests \
-    -skip qt3d \
-    -skip qtactiveqt \
-    -skip qtandroidextras \
-    -skip qtcanvas3d \
-    -skip qtcharts \
-    -skip qtconnectivity \
-    -skip qtdatavis3d \
-    -skip qtdoc \
-    -skip qtgamepad \
-    -skip qtgraphicaleffects \
-    -skip qtlocation \
-    -skip qtlottie \
-    -skip qtmacextras \
-    -skip qtmultimedia \
-    -skip qtnetwork \
-    -skip qtnetworkauth \
-    -skip qtpurchasing \
-    -skip qtquick3d \
-    -skip qtquickcontrols \
-    -skip qtquickcontrols2 \
-    -skip qtquicktimeline \
-    -skip qtremoteobjects \
-    -skip qtscript \
-    -skip qtscxml \
-    -skip qtsensors \
-    -skip qtserialbus \
-    -skip qtserialport \
-    -skip qtspeech \
-    -skip qtsvg \
-    -skip qtvirtualkeyboard \
-    -skip qtwayland \
+& "$qt_src_base_folder\configure.bat" -debug-and-release `
+    -opensource -confirm-license `
+    -platform win32-msvc2017 `
+    -list-modules `
+    -opengl desktop `
+    -no-iconv -no-dbus -no-icu -no-fontconfig -no-freetype -qt-harfbuzz `
+    -nomake examples -nomake tests `
+    -skip qt3d `
+    -skip qtactiveqt `
+    -skip qtandroidextras `
+    -skip qtcanvas3d `
+    -skip qtcharts `
+    -skip qtconnectivity `
+    -skip qtdatavis3d `
+    -skip qtdoc `
+    -skip qtgamepad `
+    -skip qtgraphicaleffects `
+    -skip qtlocation `
+    -skip qtlottie `
+    -skip qtmacextras `
+    -skip qtmultimedia `
+    -skip qtnetwork `
+    -skip qtnetworkauth `
+    -skip qtpurchasing `
+    -skip qtquick3d `
+    -skip qtquickcontrols `
+    -skip qtquickcontrols2 `
+    -skip qtquicktimeline `
+    -skip qtremoteobjects `
+    -skip qtscript `
+    -skip qtscxml `
+    -skip qtsensors `
+    -skip qtserialbus `
+    -skip qtserialport `
+    -skip qtspeech `
+    -skip qtsvg `
+    -skip qtvirtualkeyboard `
+    -skip qtwayland `
     -skip qtwebchannel
-    -skip qtwebengine \
-    -skip qtwebsockets \
-    -skip qtwebview \
-    -skip qtx11extras \
-    -skip qtxml \
-    -skip qtxmlpatterns \
-    -mp \
-    -D "JAS_DLL=0" \
-    -static \
-    -feature-relocatable \
-    -ltcg \
+    -skip qtwebengine `
+    -skip qtwebsockets `
+    -skip qtwebview `
+    -skip qtx11extras `
+    -skip qtxml `
+    -skip qtxmlpatterns `
+    -mp `
+    -D "JAS_DLL=0" `
+    -static `
+    -feature-relocatable `
+    -ltcg `
     -prefix $prefix_folder
 
 # Compile.
