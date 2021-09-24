@@ -18,7 +18,7 @@ $build_folder = $pwd.Path + "\bld"
 
 # Download Qt sources, unpack.
 aria2c "https://download.qt.io/official_releases/qt/5.15/5.15.2/single/qt-everywhere-src-5.15.2.tar.xz.meta4"
-7za x "qt-everywhere-src-5.15.2.tar.xz"
+7z x "qt-everywhere-src-5.15.2.tar.xz"
 
 # Configure.
 cd "qt-everywhere-src-5.15.2"
@@ -85,4 +85,4 @@ cd "build"
 
 # Create final archive.
 ls
-7za a -t7z "${prefix_base_folder}.7z" "$prefix_folder" -mmt -mx9
+7z a -t7z "${prefix_base_folder}.7z" "$prefix_folder" -mmt -mx9
