@@ -17,9 +17,9 @@
 
 
 # Download Qt sources, unpack.
-aria2c "https://download.qt.io/official_releases/qt/5.15/5.15.2/single/qt-everywhere-src-5.15.2.tar.xz.meta4"
-7z x "qt-everywhere-src-5.15.2.tar.xz"
-7z x "qt-everywhere-src-5.15.2.tar" -aoa
+aria2c "https://download.qt.io/official_releases/qt/5.15/5.15.2/single/qt-everywhere-src-5.15.2.zip.meta4"
+7z x "qt-everywhere-src-5.15.2.zip" -bb
+# 7z x "qt-everywhere-src-5.15.2.tar" -aoa -bb
 $qt_src_base_folder = $pwd.Path + "\qt-everywhere-src-5.15.2"
 $install_folder = $pwd.Path + "\qt-5.15.2-mscv2017-x86_64"
 ls
