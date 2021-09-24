@@ -19,7 +19,7 @@ $build_folder = $pwd.Path + "\bld"
 $aria2_binary_url = "https://github.com/aria2/aria2/releases/download/release-1.36.0/aria2-1.36.0-win-64bit-build1.zip"
 $aria2_archive_file = $aria2_binary_url.split('/')[-1]
 $aria2_folder = $aria2_archive_file -replace "\.zip$"
-$aria2 = $aria2_folder + "\aria2c.exe"
+$aria2 = $pwd.Path + "\" + "$aria2_folder + "\aria2c.exe"
 Invoke-WebRequest -Uri "$aria2_binary_url" -OutFile $aria2_archive_file
 Expand-Archive $aria2_archive_file -DestinationPath $aria2_folder
 ls
