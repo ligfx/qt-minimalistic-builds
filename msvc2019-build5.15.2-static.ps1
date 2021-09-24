@@ -5,8 +5,8 @@
 $version_base = "5.15"
 $version = "5.15.2"
 
-$qt_sources_url = "https://download.qt.io/official_releases/qt/" + $version_base + "/" + $version + "/single/qt-everywhere-src-" + $version + ".zip"
-$qt_archive_file = $pwd.Path + "\qt-" + $version + ".zip"
+$qt_sources_url = "https://download.qt.io/official_releases/qt/" + $version_base + "/" + $version + "/single/qt-everywhere-src-" + $version + ".tar.xz.meta4"
+$qt_archive_file = $pwd.Path + "\qt-" + $version + ".tar.xz"
 $qt_src_base_folder = $pwd.Path + "\qt-everywhere-src-" + $version
 
 $tools_folder = $pwd.Path + "\tools\"
@@ -19,15 +19,18 @@ $build_folder = $pwd.Path + "\bld"
 $aria2_binary_url = "https://github.com/aria2/aria2/releases/download/release-1.36.0/aria2-1.36.0-win-64bit-build1.zip"
 $aria2_archive_file = $aria2_binary_url.split('/')[-1]
 $aria2_folder = $aria2_archive_file -replace "\.zip$"
+$aria2 = $aria2_folder + "/aria2c.exe"
 Invoke-WebRequest -Uri "$aria2_binary_url" -OutFile $aria2_archive_file
 Expand-Archive $aria2_archive_file -DestinationPath $aria2_folder
 ls
-ls aria2
+ls aria2-1.36.0-win-64bit-build1.zip
 exit
 
 # Download Qt sources, unpack.
 # $AllProtocols = [System.Net.SecurityProtocolType]'Ssl3,Tls,Tls11,Tls12'
 # [System.Net.ServicePointManager]::SecurityProtocol = $AllProtocols
+
+aria2c 
 
 Invoke-WebRequest -Uri $qt_sources_url -OutFile $qt_archive_file
 & "$tools_folder\7za.exe" x $qt_archive_file
