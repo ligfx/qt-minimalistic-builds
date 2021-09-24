@@ -49,6 +49,10 @@ $skip = @(
 )
 $excludes = $skips | % { "-x!" + $_ }
 
+
+
+echo $env:Path
+
 cl
 
 # Get jom
