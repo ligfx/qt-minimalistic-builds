@@ -78,7 +78,7 @@ $skip_features = @(
   "-no-feature-xml-schema",
   "-no-feature-xmlstream",
   "-no-feature-xmlstreamreader",
-  "-no-feature-xmlstreamwriter",
+  "-no-feature-xmlstreamwriter"
 )
 
 & "$qt_src\configure.bat" -debug-and-release `
