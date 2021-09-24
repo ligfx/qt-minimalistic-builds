@@ -23,7 +23,7 @@ aria2c "https://download.qt.io/official_releases/qt/5.15/5.15.2/single/qt-everyw
 Write-Output "$(Get-Date)"
 
 Add-Type -Assembly "System.IO.Compression.Filesystem"
-[System.IO.Compression.ZipFile]::ExtractToDirectory("qt-everywhere-src-5.15.2.zip", ".", true)
+[System.IO.Compression.ZipFile]::ExtractToDirectory("qt-everywhere-src-5.15.2.zip", ".", $true)
 
 # 7z x "qt-everywhere-src-5.15.2.zip" -aoa
 # Expand-Archive "qt-everywhere-src-5.15.2.zip"
