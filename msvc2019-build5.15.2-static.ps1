@@ -19,6 +19,7 @@ $build_folder = $pwd.Path + "\bld"
 # $AllProtocols = [System.Net.SecurityProtocolType]'Ssl3,Tls,Tls11,Tls12'
 # [System.Net.ServicePointManager]::SecurityProtocol = $AllProtocols
 
+C:\Windows\System32\curl -L $qt_sources_url -o $qt_archive_file
 Invoke-WebRequest -Uri $qt_sources_url -OutFile $qt_archive_file
 & "$tools_folder\7za.exe" x $qt_archive_file
 
