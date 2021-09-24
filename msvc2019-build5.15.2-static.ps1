@@ -3,6 +3,7 @@
 # 3. cd to path of repo.
 # 4. Run this script.
 
+Set-PSDebug -Trace 1
 
 $skip = @(
   "qt3d",
@@ -65,6 +66,7 @@ Add-MpPreference -ExclusionPath $pwd.Path
 Write-Output "$(Get-Date)"
 aria2c "https://download.qt.io/official_releases/qt/5.15/5.15.2/single/qt-everywhere-src-5.15.2.zip.meta4"
 Write-Output "$(Get-Date)"
+echo @excludes
 7z x "qt-everywhere-src-5.15.2.zip" -aoa -bsp1 @excludes
 Write-Output "$(Get-Date)"
 $qt_src = $pwd.Path + "\qt-everywhere-src-5.15.2"
