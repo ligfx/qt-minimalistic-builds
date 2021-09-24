@@ -15,32 +15,17 @@ $prefix_base_folder = "qt-" + $version + "-" + $type + "-msvc2019-x86_64"
 $prefix_folder = $pwd.Path + "\" + $prefix_base_folder
 $build_folder = $pwd.Path + "\bld"
 
-# Download aria2, unpack
-# $aria2_binary_url = "https://github.com/aria2/aria2/releases/download/release-1.36.0/aria2-1.36.0-win-64bit-build1.zip"
-# $aria2_archive_file = $aria2_binary_url.split('/')[-1]
-# $aria2_folder = $aria2_archive_file -replace "\.zip$"
-# $aria2 = $pwd.Path + "\" + "$aria2_folder + "\aria2c.exe"
-# Invoke-WebRequest -Uri "$aria2_binary_url" -OutFile $aria2_archive_file
-# Expand-Archive $aria2_archive_file -DestinationPath $aria2_folder
-# ls
-# ls aria2-1.36.0-win-64bit-build1.zip
 
 # Download Qt sources, unpack.
-# $AllProtocols = [System.Net.SecurityProtocolType]'Ssl3,Tls,Tls11,Tls12'
-# [System.Net.ServicePointManager]::SecurityProtocol = $AllProtocols
-
-aria2 $qt_sources_url
-7za x $qt_archive_file
-
-# Invoke-WebRequest -Uri $qt_sources_url -OutFile $qt_archive_file
-# ls
-# & "$tools_folder\7za.exe" x $qt_archive_file
+aria2c "https://download.qt.io/official_releases/qt/5.15/5.15.2/single/qt-everywhere-src-5.15.2.tar.xz.meta4"
+7za x "qt-everywhere-src-5.15.2.tar.xz"
 
 # Configure.
-mkdir $build_folder
-cd $build_folder
+cd "qt-everywhere-src-5.15.2"
+mkdir "build"
+cd "build"
 
-& "$qt_src_base_folder\configure.bat" -debug-and-release \
+& "..\configure.bat" -debug-and-release \
     -opensource -confirm-license \
     -platform win32-msvc2017 \
     -list-modules \
@@ -93,8 +78,11 @@ cd $build_folder
     -prefix $prefix_folder
 
 # Compile.
-nmake
-nmake install
+& "$tools_folder\jom.exe"
+& "$tools_folder\jom.exe" install
+#nmake
+#nmake install
 
 # Create final archive.
+ls
 7za a -t7z "${prefix_base_folder}.7z" "$prefix_folder" -mmt -mx9
