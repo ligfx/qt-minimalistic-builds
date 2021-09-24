@@ -3,9 +3,7 @@
 # 3. cd to path of repo.
 # 4. Run this script.
 
-Set-PSDebug -Trace 1
-
-$skip = @(
+$skips = @(
   "qt3d",
   "qtactiveqt",
   "qtandroidextras",
