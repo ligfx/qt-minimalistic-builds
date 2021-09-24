@@ -16,8 +16,8 @@ $prefix_folder = $pwd.Path + "\" + $prefix_base_folder
 $build_folder = $pwd.Path + "\bld"
 
 # Download Qt sources, unpack.
-$AllProtocols = [System.Net.SecurityProtocolType]'Ssl3,Tls,Tls11,Tls12'
-[System.Net.ServicePointManager]::SecurityProtocol = $AllProtocols
+# $AllProtocols = [System.Net.SecurityProtocolType]'Ssl3,Tls,Tls11,Tls12'
+# [System.Net.ServicePointManager]::SecurityProtocol = $AllProtocols
 
 Invoke-WebRequest -Uri $qt_sources_url -OutFile $qt_archive_file
 & "$tools_folder\7za.exe" x $qt_archive_file
