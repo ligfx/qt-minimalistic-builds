@@ -19,6 +19,11 @@ jobs:
     steps:
     - name: "Check out source"
       uses: actions/checkout@v2
+    - name: "Set environment variables"
+      shell: cmd
+      run: |
+        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat" || exit
+        set >> $GITHUB_ENV || exit
     - name: "Build"
       run: ./msvc2019-build5.15.2-static.ps1
     - name: "List"
