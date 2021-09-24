@@ -7,6 +7,8 @@ on:
     branches: [ master ]
 
 env:
+  # two CPUs on runners
+  MAKEFLAGS: -j3
   # set some variables for Visual Studio
   MultiProcessorCompilation: true
   UseMultiToolTask: true
