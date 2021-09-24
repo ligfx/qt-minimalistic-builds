@@ -32,6 +32,7 @@ ls aria2-1.36.0-win-64bit-build1.zip
 aria2c $qt_sources_url -o $qt_archive_file
 
 # Invoke-WebRequest -Uri $qt_sources_url -OutFile $qt_archive_file
+ls
 & "$tools_folder\7za.exe" x $qt_archive_file
 
 # Configure.
