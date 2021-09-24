@@ -86,7 +86,7 @@ $skip_features = @(
     -platform win32-msvc `
     -opengl desktop `
     -no-iconv -no-dbus -no-icu -no-fontconfig -no-freetype -qt-harfbuzz `
-    -nomake examples -nomake tests -nomake-tools `
+    -nomake examples -nomake tests -nomake tools `
     @qtskips `
     @skip_features `
     -mp `
